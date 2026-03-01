@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ridwan - UI Designer & Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        body {
+            background-color: #0a1a3a;
+            color: #fff;
+            line-height: 1.6;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(100, 100, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: rgba(10, 26, 58, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(77, 166, 255, 0.3);
+            box-shadow: 0 0 20px rgba(77, 166, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo h2 {
+            color: #fff;
+            font-size: 1.8rem;
+            text-shadow: 0 0 10px #4da6ff;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-shadow: 0 0 5px rgba(77, 166, 255, 0.5);
+        }
+        .nav-links a:hover {
+            color: #4da6ff;
+            text-shadow: 0 0 15px #4da6ff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            min-height: 80vh;
+        }
+        .hero-text {
+            flex: 1 1 400px;
+        }
+        .hero-text .greeting {
+            font-size: 1.5rem;
+            color: #4da6ff;
+            text-shadow: 0 0 10px #4da6ff;
+            margin-bottom: 0.5rem;
+        }
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px #4da6ff;
+        }
+        .hero-text .role {
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            min-height: 3.5rem;
+        }
+        .hero-text .role span {
+            color: #4da6ff;
+            border-right: 2px solid #4da6ff;
+            padding-right: 5px;
+            animation: blink 0.8s infinite;
+            text-shadow: 0 0 10px #4da6ff;
+        }
+        @keyframes blink {
+            0%, 100% { border-color: #4da6ff; }
+            50% { border-color: transparent; }
+        }
+        .hero-text p {
+            color: #ddd;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+        .btn {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid #4da6ff;
+            color: #4da6ff;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(77, 166, 255, 0.3);
+            text-shadow: 0 0 5px #4da6ff;
+        }
+        .btn:hover {
+            background: #4da6ff;
+            color: #0a1a3a;
+            box-shadow: 0 0 30px #4da6ff;
+            transform: translateY(-2px);
+        }
+        .hero-image {
+            flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .profile-wrapper {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .rotating-circle {
+            position: absolute;
+            width: calc(100% + 20px);
+            height: calc(100% + 20px);
+            border-radius: 50%;
+            background: conic-gradient(#4da6ff, #a64dff, #4da6ff);
+            animation: spin 4s linear infinite;
+            filter: blur(5px);
+            z-index: 1;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .profile-pic {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #4da6ff;
+            box-shadow: 0 0 30px #4da6ff, 0 0 60px rgba(77, 166, 255, 0.5);
+            z-index: 2;
+            background: #1a2a4a;
+        }
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Section Titles */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 0 15px #4da6ff;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #4da6ff;
+            border-radius: 2px;
+            box-shadow: 0 0 20px #4da6ff;
+        }
+        /* About */
+        .about-content {
+            background: rgba(10, 26, 58, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(77, 166, 255, 0.3);
+            box-shadow: 0 0 30px rgba(77, 166, 255, 0.3);
+            transition: all 0.3s;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .about-content:hover {
+            box-shadow: 0 0 50px rgba(77, 166, 255, 0.5);
+            border-color: #4da6ff;
+        }
+        .about-text {
+            flex: 2 1 400px;
+        }
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #4da6ff;
+            text-shadow: 0 0 10px #4da6ff;
+        }
+        .about-text p {
+            color: #ddd;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        .about-image {
+            flex: 1 1 250px;
+            display: flex;
+            justify-content: center;
+        }
+        .about-profile-pic {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #4da6ff;
+            box-shadow: 0 0 20px rgba(77, 166, 255, 0.3);
+            background: #1a2a4a;
+        }
+        .about-profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .service-card {
+            background: rgba(10, 26, 58, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(77, 166, 255, 0.3);
+            box-shadow: 0 0 20px rgba(77, 166, 255, 0.2);
+            transition: all 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px rgba(77, 166, 255, 0.5);
+            border-color: #4da6ff;
+        }
+        .service-card i {
+            font-size: 3rem;
+            color: #4da6ff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px #4da6ff;
+        }
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: #4da6ff;
+            text-shadow: 0 0 10px #4da6ff;
+        }
+        .service-card p {
+            color: #ddd;
+            margin-bottom: 1.5rem;
+        }
+        .service-card .btn-small {
+            background: transparent;
+            border: 2px solid #4da6ff;
+            color: #4da6ff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(77, 166, 255, 0.3);
+        }
+        .service-card .btn-small:hover {
+            background: #4da6ff;
+            color: #0a1a3a;
+            box-shadow: 0 0 30px #4da6ff;
+        }
+        /* Skills */
+        .skills-container {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .skill-category {
+            background: rgba(10, 26, 58, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(77, 166, 255, 0.3);
+            box-shadow: 0 0 20px rgba(77, 166, 255, 0.2);
+            transition: all 0.3s;
+            flex: 1 1 300px;
+        }
+        .skill-category:hover {
+            box-shadow: 0 0 40px rgba(77, 166, 255, 0.5);
+            border-color: #4da6ff;
+        }
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+            color: #4da6ff;
+            text-shadow: 0 0 10px #4da6ff;
+        }
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: #ddd;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #1a2a4a;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #4da6ff;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1s;
+            box-shadow: 0 0 20px #4da6ff;
+        }
+        .professional-skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .circle-skill {
+            text-align: center;
+        }
+        .circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(#4da6ff 0deg calc(3.6deg * var(--percent)), #1a2a4a 0deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 0 auto 0.5rem;
+        }
+        .circle::before {
+            content: '';
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #0a1a3a;
+            position: absolute;
+        }
+        .circle span {
+            position: relative;
+            z-index: 2;
+            font-weight: bold;
+            color: #fff;
+            font-size: 1.3rem;
+        }
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .portfolio-card {
+            background: rgba(10, 26, 58, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(77, 166, 255, 0.3);
+            box-shadow: 0 0 20px rgba(77, 166, 255, 0.2);
+            transition: all 0.3s;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(77, 166, 255, 0.5);
+            border-color: #4da6ff;
+        }
+        .portfolio-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #1a2a4a;
+        }
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+        .portfolio-info h3 {
+            margin-bottom: 0.5rem;
+            color: #4da6ff;
+            text-shadow: 0 0 10px #4da6ff;
+        }
+        .portfolio-info p {
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+        /* Contact */
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            background: rgba(10, 26, 58, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(77, 166, 255, 0.3);
+            box-shadow: 0 0 30px rgba(77, 166, 255, 0.3);
+            transition: all 0.3s;
+        }
+        .contact-container:hover {
+            box-shadow: 0 0 50px rgba(77, 166, 255, 0.5);
+            border-color: #4da6ff;
+        }
+        .contact-info {
+            flex: 1 1 300px;
+        }
+        .contact-info h3 {
+            color: #4da6ff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px #4da6ff;
+        }
+        .contact-info p {
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+        .contact-info i {
+            color: #4da6ff;
+            width: 30px;
+            text-shadow: 0 0 10px #4da6ff;
+        }
+        .contact-form {
+            flex: 2 1 400px;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: #1a2a4a;
+            border: 1px solid #4da6ff;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(77, 166, 255, 0.2);
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4da6ff;
+            box-shadow: 0 0 30px #4da6ff;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #aaa;
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(77, 166, 255, 0.3);
+            margin-top: 3rem;
+            color: #ccc;
+            box-shadow: 0 -10px 30px rgba(77, 166, 255, 0.2);
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .hero-text .role {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><h2>Muhammad Ridwan</h2></div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home" class="container hero">
+        <div class="hero-text">
+            <p class="greeting">Hello, It's Me</p>
+            <h1>Muhammad Ridwan</h1>
+            <div class="role">And I'm a <span id="typing"></span></div>
+            <p id="hero-description">Saya adalah seorang pengembang web dan desainer UI yang bersemangat dalam menciptakan pengalaman digital yang menarik dan fungsional. Saya siap membantu mewujudkan ide-ide Anda menjadi kenyataan.</p>
+            <a href="#about" class="btn">More About Me</a>
+        </div>
+        <div class="hero-image">
+            <div class="profile-wrapper">
+                <div class="rotating-circle"></div>
+                <div class="profile-pic">
+                    <img src="Screenshot_20260301-063555.jpg" alt="Muhammad Ridwan">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Muhammad Ridwan</h3>
+                <p id="about-description">Saya adalah seorang mahasiswa ilmu komputer berusia 16 tahun dengan minat mendalam di bidang teknologi informasi. Saya memiliki keahlian dalam elektronika dan pemrograman, serta pengalaman sebagai Teknisi Jaringan. Selain itu, saya juga aktif sebagai frontend dan web developer, menguasai HTML, CSS, dan JavaScript, serta framework seperti React. Saya senang menciptakan website yang responsif dan menarik, menggabungkan fungsionalitas dengan desain estetis. Di samping itu, saya memiliki minat dalam desain grafis. Saya percaya bahwa teknologi dan seni dapat bersinergi untuk menciptakan pengalaman yang luar biasa.</p>
+                <a href="#" class="btn">More About Me</a>
+            </div>
+            <div class="about-image">
+                <div class="about-profile-pic">
+                    <img src="Screenshot_20260301-063555.jpg" alt="Muhammad Ridwan">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="container">
+        <h2 class="section-title">My Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>UI/UX Design</h3>
+                <p class="service-desc">Saya menyediakan layanan desain UI/UX profesional yang fokus pada antarmuka intuitif, estetis, dan fungsional. Saya memastikan desain tidak hanya menarik secara visual tetapi juga efektif dalam mencapai tujuan bisnis.</p>
+                <a href="#" class="btn-small">Contact me</a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-palette"></i>
+                <h3>Graphic Design</h3>
+                <p class="service-desc">Saya menawarkan layanan desain grafis kreatif untuk mewujudkan ide Anda menjadi mahakarya visual. Saya memastikan setiap desain tidak hanya estetis tetapi juga efektif dalam menyampaikan pesan.</p>
+                <a href="#" class="btn-small">Contact me</a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-code"></i>
+                <h3>Frontend Dev</h3>
+                <p class="service-desc">Saya membangun antarmuka pengguna yang responsif dan menarik dengan HTML, CSS, JavaScript, dan React. Saya berkomitmen memastikan setiap proyek berfungsi baik di berbagai perangkat dan browser.</p>
+                <a href="#" class="btn-small">Contact me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="container">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-container">
+            <!-- Technical Skills -->
+            <div class="skill-category">
+                <h3>Technical Skills</h3>
+                <div class="skill-item">
+                    <div class="skill-info"><span>HTML</span><span>90%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>CSS</span><span>60%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>JavaScript</span><span>45%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Python</span><span>50%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>React</span><span>75%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
+                </div>
+            </div>
+            <!-- Professional Skills -->
+            <div class="skill-category">
+                <h3>Professional Skills</h3>
+                <div class="professional-skills">
+                    <div class="circle-skill">
+                        <div class="circle" style="--percent:90"><span>90%</span></div>
+                        <p>Creativity</p>
+                    </div>
+                    <div class="circle-skill">
+                        <div class="circle" style="--percent:80"><span>80%</span></div>
+                        <p>Communication</p>
+                    </div>
+                    <div class="circle-skill">
+                        <div class="circle" style="--percent:75"><span>75%</span></div>
+                        <p>Problem Solve</p>
+                    </div>
+                    <div class="circle-skill">
+                        <div class="circle" style="--percent:85"><span>85%</span></div>
+                        <p>TeamWork</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="container">
+        <h2 class="section-title">Latest Project</h2>
+        <div class="portfolio-grid">
+            <!-- Project 1 -->
+            <div class="portfolio-card">
+                <div class="portfolio-img" style="background-image: url('1772287980701.gif');"></div>
+                <div class="portfolio-info">
+                    <h3>UX/UI Design</h3>
+                    <p class="project-desc">Gambar inilah proyek yang tren untuk pengembangan perpaduan antara teknologi dan estetika desain yang inovatif dan fokus pada pengalaman pengguna yang lebih personal.</p>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="portfolio-card">
+                <div class="portfolio-img" style="background-image: url('1772287668987.gif');"></div>
+                <div class="portfolio-info">
+                    <h3>Dashboard User Admin Panel</h3>
+                    <p class="project-desc">Infographic Element Collection: Logo, Header, Footer, Sidebar, Content, CTA, Social Media Icons, SEO Stats, Analytics, Contact Form.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Let's work together</h3>
+                <p>Saya senang Anda mengunjungi website portofolio pribadi saya! Jika Anda memiliki pertanyaan, saran, atau ingin berkolaborasi, silakan hubungi saya melalui formulir ini. Saya akan berusaha membalas pesan Anda secepat mungkin.</p>
+                <p><i class="fas fa-envelope"></i> muhamadridwan6867@gmail.com</p>
+                <p><i class="fas fa-phone-alt"></i> +6285669758286</p>
+            </div>
+            <div class="contact-form">
+                <form action="https://formspree.io/f/xykdvank" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Nama Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subjek">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Pesan Anda..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>developed with Muhammad Ridwan</p>
+    </footer>
+
+    <script>
+        // Efek typing untuk role (UI Designer / Web Developer)
+        const typingElement = document.getElementById('typing');
+        const texts = ['UI Designer', 'Web Developer'];
+        let index = 0, charIndex = 0, isDeleting = false;
+
+        function typeEffect() {
+            const fullText = texts[index];
+            if (isDeleting) {
+                charIndex--;
+                typingElement.textContent = fullText.substring(0, charIndex);
+            } else {
+                charIndex++;
+                typingElement.textContent = fullText.substring(0, charIndex);
+            }
+            if (!isDeleting && charIndex === fullText.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 1500);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                index = (index + 1) % texts.length;
+                setTimeout(typeEffect, 500);
+            } else {
+                setTimeout(typeEffect, isDeleting ? 50 : 100);
+            }
+        }
+        typeEffect();
+
+        // Efek typing untuk semua teks di dalam kolom (kecuali contact)
+        const textElements = [
+            document.getElementById('hero-description'),
+            document.getElementById('about-description'),
+            ...document.querySelectorAll('.service-desc'),
+            ...document.querySelectorAll('.project-desc')
+        ].filter(el => el);
+
+        // Simpan teks asli
+        textElements.forEach(el => {
+            el.setAttribute('data-original', el.textContent);
+        });
+
+        // Fungsi untuk mengetik satu elemen
+        function typeWriter(element, text, i, callback) {
+            if (i < text.length) {
+                element.innerHTML = text.substring(0, i + 1);
+                setTimeout(() => typeWriter(element, text, i + 1, callback), 30);
+            } else {
+                if (callback) setTimeout(callback, 2000);
+            }
+        }
+
+        // Fungsi untuk menghapus teks
+        function eraseWriter(element, text, i, callback) {
+            if (i >= 0) {
+                element.innerHTML = text.substring(0, i);
+                setTimeout(() => eraseWriter(element, text, i - 1, callback), 20);
+            } else {
+                if (callback) setTimeout(callback, 500);
+            }
+        }
+
+        // Loop utama untuk semua elemen
+        function startTypingLoop() {
+            let currentIndex = 0;
+
+            function processNext() {
+                if (currentIndex >= textElements.length) {
+                    currentIndex = 0;
+                }
+                const el = textElements[currentIndex];
+                const originalText = el.getAttribute('data-original');
+
+                typeWriter(el, originalText, 0, () => {
+                    eraseWriter(el, originalText, originalText.length - 1, () => {
+                        currentIndex++;
+                        processNext();
+                    });
+                });
+            }
+            processNext();
+        }
+
+        // Mulai loop jika ada elemen
+        if (textElements.length > 0) {
+            setTimeout(startTypingLoop, 2000);
+        }
+    </script>
+</body>
+</html>
